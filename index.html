@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Interactive Analysis: DPS Myanmar in the Polycrisis</title>
-  <link rel="shortcut icon" href="https://dpsmap.com/assets/favicon/favicon-512x512.png" sizes="512x512" type="image/x-icon" />
+  <title>AI.DPSMap.com</title>
+   <link rel="shortcut icon" href="https://dpsmap.com/assets/favicon/favicon-512x512.png" sizes="512x512" type="image/x-icon" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -21,456 +21,41 @@
   </style>
 </head>
 
-<body class="bg-stone-100 text-stone-800">
+<!-- <button class="bg-stone-100 text-stone-800"> -->
 
   <!-- Header with Mobile Menu -->
   <header class="bg-white shadow-sm sticky top-0 z-50">
     <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
       <div class="font-bold text-xl text-stone-900">
-        <span class="text-amber-600" style="color: #3b82f6 !important;"><a href="strategic.html"> DPS Myanmar: </a></span> Strategic Analysis
+        <a href="https://dpsmap.com/" class="text-stone-600 hover:text-amber-600 transition-colors"></a><span class="text-amber-600" style="color: #3b82f6 !important;">DPS Myanmar: </span><a href="index.html" class="text-stone-600 hover:text-amber-600 transition-colors">Strategic Analysis</a>
       </div>
       <div class="hidden md:flex space-x-8">
-        <a href="https://dpsmap.com/" class="text-stone-600 hover:text-amber-600 transition-colors">Home</a>
+        <!-- <a href="https://dpsmap.com/" class="text-stone-600 hover:text-amber-600 transition-colors">Home</a> -->
         <!-- <a href="#overview" class="text-stone-600 hover:text-amber-600 transition-colors">Overview</a>
         <a href="#polycrisis" class="text-stone-600 hover:text-amber-600 transition-colors">Polycrisis</a>
         <a href="#swot" class="text-stone-600 hover:text-amber-600 transition-colors">SWOT Analysis</a>
         <a href="#strategy" class="text-stone-600 hover:text-amber-600 transition-colors">Strategies</a> -->
-        <a href="geo.html" class="text-stone-600 hover:text-amber-600 transition-colors">Geospatial Storytelling</a>
-        <a href="mmgoldreport.html" class="text-stone-600 hover:text-amber-600 transition-colors">MM Gold Report</a>
+        <!-- <a href="geo.html" class="text-stone-600 hover:text-amber-600 transition-colors">Geospatial Storytelling</a> -->
+        <!-- <a href="mmgoldreport.html" class="text-stone-600 hover:text-amber-600 transition-colors">MM Gold Report</a> -->
       </div>
-      <div class="md:hidden">
+      <!-- <div class="md:hidden">
         <button id="mobile-menu-button" class="text-stone-600 hover:text-amber-600 focus:outline-none">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
               d="M4 6h16M4 12h16m-7 6h7"></path>
           </svg>
         </button>
-      </div>
+      </div> -->
     </nav>
-    <div id="mobile-menu" class="hidden md:hidden bg-white px-6 pt-2 pb-4 space-y-2">
-      <a href="https://dpsmap.com/" class="text-stone-600 hover:text-blue-600">Home</a>
+    <!-- <div id="mobile-menu" class="hidden md:hidden bg-white px-6 pt-2 pb-4 space-y-2"> -->
+      <!-- <a href="https://dpsmap.com/" class="text-stone-600 hover:text-blue-600">Home</a> -->
       <!-- <a href="#overview" class="text-stone-600 hover:text-blue-600">Overview</a>
       <a href="#polycrisis" class="text-stone-600 hover:text-blue-600">The Polycrisis</a>
       <a href="#swot" class="text-stone-600 hover:text-blue-600">SWOT Analysis</a>
       <a href="#strategy" class="text-stone-600 hover:text-blue-600">Strategies</a> -->
-      <a href="geo.html" class="text-stone-600 hover:text-blue-600">Geospatial Storytelling</a>
-      <a href="mmgoldreport.html" class="text-stone-600 hover:text-blue-600">MM Goldreport</a>
+      <!-- <a href="geo.html" class="text-stone-600 hover:text-blue-600">Geospatial Storytelling</a> -->
+      <!-- <a href="mmgoldreport.html" class="text-stone-600 hover:text-blue-600">MM Goldreport</a> -->
     </div>
   </header>
-
-    <!-- MAIN CONTENT -->
-  <main class="container mx-auto p-4 md:p-8">
-        
-        <section id="overview" class="text-center mb-16 section-fade-in">
-            <h2 class="text-4xl font-bold text-stone-900 mb-4">Navigating the Polycrisis</h2>
-            <p class="max-w-3xl mx-auto text-lg text-stone-600 mb-8">
-                An interactive analysis of Design Printing Services (DPS), a resilient pioneer facing existential threats and unique opportunities in Myanmar's turbulent landscape. This dashboard explores the core challenges and strategic path forward for a company whose greatest asset—a 27-year-old proprietary data map—is both its fortress and its vulnerability.
-            </p>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-                <div class="bg-white p-6 rounded-xl shadow">
-                    <h3 class="font-bold text-2xl text-blue-600">27+</h3>
-                    <p class="text-stone-600">Years of Operation</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow">
-                    <h3 class="font-bold text-2xl text-blue-600">511K+</h3>
-                    <p class="text-stone-600">Proprietary Address Points</p>
-                </div>
-                <div class="bg-white p-6 rounded-xl shadow">
-                    <h3 class="font-bold text-2xl text-blue-600">Global Clients</h3>
-                    <p class="text-stone-600">Trusted by Grab, TomTom, HERE</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="polycrisis" class="mb-16 section-fade-in">
-            <div class="text-center mb-10">
-                <h2 class="text-3xl font-bold text-stone-900">The Operating Environment: Myanmar's Polycrisis</h2>
-                <p class="max-w-3xl mx-auto text-md text-stone-600 mt-2">
-                    DPS operates in one of the world's most volatile markets, a "polycrisis" where political, economic, social, and technological crises converge. This dashboard visualizes the key external factors shaping the company's future. Click through the tabs to explore the severe challenges impacting the nation.
-                </p>
-            </div>
-            <div class="bg-white rounded-xl shadow p-4 sm:p-6">
-                <div class="border-b border-stone-200 mb-6">
-                    <nav class="-mb-px flex space-x-4 sm:space-x-8" aria-label="Tabs">
-                        <button onclick="changeTab('political')" id="tab-btn-political" class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm text-stone-500 hover:text-blue-600 hover:border-blue-600 active-tab">Political</button>
-                        <button onclick="changeTab('economic')" id="tab-btn-economic" class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm text-stone-500 hover:text-blue-600 hover:border-blue-600">Economic</button>
-                        <button onclick="changeTab('social')" id="tab-btn-social" class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm text-stone-500 hover:text-blue-600 hover:border-blue-600">Social</button>
-                        <button onclick="changeTab('technological')" id="tab-btn-technological" class="whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm text-stone-500 hover:text-blue-600 hover:border-blue-600">Technological</button>
-                    </nav>
-                </div>
-                <div id="tab-content">
-                </div>
-            </div>
-        </section>
-
-        <section id="swot" class="mb-16 section-fade-in">
-            <div class="text-center mb-10">
-                <h2 class="text-3xl font-bold text-stone-900">Interactive SWOT Analysiss</h2>
-                <p class="max-w-3xl mx-auto text-md text-stone-600 mt-2">
-                    Here we break down the core internal and external factors affecting DPS. The company's strategy must balance its unique strengths against profound weaknesses, while navigating external threats to seize emergent opportunities. Click on any quadrant to reveal a detailed analysis.
-                </p>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
-                <div class="p-6 rounded-xl swot-card bg-green-100 border-2 border-green-200 cursor-pointer" onclick="showSwotDetail('strengths')">
-                    <h3 class="font-bold text-2xl text-green-800 mb-2">Strengths <span class="text-lg">▲</span></h3>
-                    <p class="text-green-700">Internal factors that give DPS an edge.</p>
-                </div>
-                <div class="p-6 rounded-xl swot-card bg-red-100 border-2 border-red-200 cursor-pointer" onclick="showSwotDetail('weaknesses')">
-                    <h3 class="font-bold text-2xl text-red-800 mb-2">Weaknesses <span class="text-lg">▼</span></h3>
-                    <p class="text-red-700">Internal factors that are disadvantages.</p>
-                </div>
-                <div class="p-6 rounded-xl swot-card bg-blue-100 border-2 border-blue-200 cursor-pointer" onclick="showSwotDetail('opportunities')">
-                    <h3 class="font-bold text-2xl text-blue-800 mb-2">Opportunities <span class="text-lg">💡</span></h3>
-                    <p class="text-blue-700">External factors DPS could exploit.</p>
-                </div>
-                <div class="p-6 rounded-xl swot-card bg-yellow-100 border-2 border-yellow-200 cursor-pointer" onclick="showSwotDetail('threats')">
-                    <h3 class="font-bold text-2xl text-yellow-800 mb-2">Threats <span class="text-lg">🛡️</span></h3>
-                    <p class="text-yellow-700">External factors that could harm DPS.</p>
-                </div>
-            </div>
-            <div id="swot-detail-container" class="mt-6"></div>
-        </section>
-
-        <section id="strategy" class="section-fade-in">
-            <div class="text-center mb-10">
-                <h2 class="text-3xl font-bold text-stone-900">Strategic Imperatives</h2>
-                <p class="max-w-3xl mx-auto text-md text-stone-600 mt-2">
-                    Based on the analysis, DPS must pursue a multi-faceted strategy to survive and thrive. The following recommendations are designed to leverage strengths, mitigate weaknesses, seize opportunities, and defend against threats. Click each strategy to expand.
-                </p>
-            </div>
-            <div id="strategy-accordion" class="space-y-4"></div>
-        </section>
-    </main>
-
-    <!-- FOOTER -->
-  <footer class="bg-white mt-16 py-6 border-t">
-    <div class="container mx-auto text-center text-stone-500 text-sm">
-      <p>Interactive Report generated from Source Document. For educational and analytical purposes only.</p>
-      <p>Data as of 7 July 2025 analysis.</p>
-    </div>
-  </footer>
-    <center>
-    
-    <!-- Start of StatCounter Code for Dreamweaver ကိုကြီးနှင့် ေအာင်သက်ပိုင် တို့ ၃၀.၁.၂၀၂၃ တွင် ထည့်သည် -->
-        <script type="text/javascript">
-        var sc_project=310175;
-        var sc_invisible=0;
-        var sc_security="df515d3d";
-        var scJsHost = (("https:" == document.location.protocol) ?
-        "https://secure." : "http://www.");
-        document.write("<sc"+"ript type='text/javascript' src='" +
-        scJsHost+
-        "statcounter.com/counter/counter.js'></"+"script>");
-        </script>
-        <noscript><div class="statcounter"><a title="web counter"
-        href="http://statcounter.com/" target="_blank"><img
-        class="statcounter"
-        src="//c.statcounter.com/310175/0/df515d3d/0/" alt="web
-        counter"></a></div></noscript>
-    </center>
-    <center>
-        <noscript></noscript>
-    </center>
-
-<!-- CHART.JS & TOGGLE LOGIC -->
-  <script>
-const pestData = {
-    political: {
-        title: 'Political Instability & Conflict',
-        summary: 'The nation is in its fifth year of military rule, with escalating civil conflict creating extreme operational risks. The regime\'s control is limited, making governance unpredictable and policy volatile.',
-        chartType: 'doughnut',
-        chartData: {
-            labels: ['SAC-Controlled Territory', 'Contested/Other'],
-            datasets: [{
-                label: 'Territory Control (%)',
-                data: [21, 79],
-                backgroundColor: ['#ef4444', '#d1d5db'],
-                borderColor: '#ffffff',
-                borderWidth: 4,
-            }]
-        },
-        chartOptions: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: { position: 'bottom' },
-                title: { display: true, text: 'Estimated National Territory Control (%)' }
-            }
-        },
-        kpis: [
-            { label: 'Internally Displaced People', value: '3.5 Million' },
-            { label: 'Effective Gov. Control', value: '21% of Territory' },
-        ]
-    },
-    economic: {
-        title: 'Severe Economic Contraction',
-        summary: 'Myanmar faces a deep economic crisis, marked by negative GDP growth, hyperinflation, and widespread poverty. This severely impacts consumer spending and the financial health of DPS\'s commercial clients.',
-        chartType: 'bar',
-        chartData: {
-            labels: ['GDP Growth FY25/26 (Proj.)', 'Annual Inflation (Apr 2025)'],
-            datasets: [{
-                label: 'Economic Indicators (%)',
-                data: [-2.5, 34.1],
-                backgroundColor: ['#f97316', '#ef4444'],
-                borderRadius: 4
-            }]
-        },
-        chartOptions: {indexAxis: 'y',
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: { display: false },
-                title: { display: true, text: 'Key Macroeconomic Indicators (%)' }
-            },
-            scales: {
-                x: { grid: { display: false } },
-                y: { grid: { display: false } }
-            }
-        },
-        kpis: [
-            { label: 'Projected GDP Contraction', value: '-2.5%' },
-            { label: 'Estimated Annual Inflation', value: '34.1%' },
-            { label: 'Poverty Rate', value: '> 31%' }
-        ]
-    },
-    social: {
-        title: 'Social Disruption & Brain Drain',
-        summary: 'The crisis has led to a major "youth and skills exodus" due to conscription and lack of opportunities, creating labor shortages. Human capital is eroding as education and health systems falter.',
-        chartType: null,
-        kpis: [
-            { label: 'Key Issue', value: 'Youth & Skills Exodus' },
-            { label: 'Primary Driver', value: 'National Conscription Law' },
-            { label: 'Impact', value: 'Severe Labor Shortages & Brain Drain' }
-        ]
-    },
-    technological: {
-        title: 'The Digital Paradox',
-        summary: 'While internet penetration is high (61.1%), the infrastructure is failing. Plunging internet speeds and frequent blackouts make digital services unreliable. Users are migrating from Facebook to platforms like Telegram and TikTok.',
-        chartType: 'bar',
-        chartData: {
-            labels: ['Median Mobile Speed (Decline)', 'Facebook Ad Reach (Decline)'],
-            datasets: [{
-                label: 'Decline in Past Year (%)',
-                data: [78.2, 29.5],
-                backgroundColor: ['#f59e0b', '#3b82f6'],
-                borderRadius: 4
-            }]
-        },
-        chartOptions: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: { display: false },
-                title: { display: true, text: 'Digital Ecosystem Decay (Annual % Change)' }
-            },
-             scales: {
-                x: { grid: { display: false }, max: 100 },
-                y: { grid: { display: false } }
-            }
-        },
-        kpis: [
-            { label: 'Internet Penetration', value: '61.1%' },
-            { label: 'Median Mobile Speed', value: '5.09 Mbps (-78.2%)' },
-            { label: 'Key Trend', value: 'Rise of MMQR Digital Payments' }
-        ]
-    }
-};
-
-const swotData = {
-    strengths: {
-        title: 'Strengths',
-        color: 'green',
-        points: [
-            "<strong>Unparalleled Proprietary GIS Database:</strong> A deep, granular, nationwide data asset built over 27 years, with 511,181+ Address Points (APs) and 60,000+ Points of Interest (POIs), creating a high barrier to entry.",
-            "<strong>First-Mover Advantage & Brand Equity:</strong> Strong brand recognition ('Best Guide in Town') and trust as the pioneer of commercial mapping in Myanmar.",
-            "<strong>Established High-Profile Client Relationships:</strong> A trusted partner to global tech firms (Grab, TomTom), government bodies (YCDC), NGOs (UNESCO), and corporations (Unilever).",
-            "<strong>Diversified Service Portfolio for Resilience:</strong> A mix of digital and physical products (print, GPS hardware) provides a hedge against infrastructure failure."
-        ]
-    },
-    weaknesses: {
-        title: 'Weaknesses',
-        color: 'red',
-        points: [
-            "<strong>Potential Technological Obsolescence:</strong> Core technology stack may be aging compared to modern, cloud-native platforms like Esri's ArcGIS.",
-            "<strong>Resource Dilution Across Non-Core Services:</strong> Maintaining ancillary services (general printing, web design) diverts capital and focus from the core data business.",
-            "<strong>High-Cost, High-Risk Data Maintenance Model:</strong> Reliance on physical, on-the-ground GPS surveys is expensive and dangerous in the current conflict environment.",
-            "<strong>Potential Over-reliance on Legacy Print Products:</strong> Continued promotion of printed maps could signal a business culture slow to fully embrace a digital-first model."
-        ]
-    },
-    opportunities: {
-        title: 'Opportunities',
-        color: 'blue',
-        points: [
-            "<strong>Growing Demand from Logistics & E-commerce:</strong> The rise of social commerce and delivery services creates a critical need for accurate address data and route planning.",
-            "<strong>Foundational Role in Emerging FinTech (MMQR):</strong> The national push for digital payments requires precise location data for vendor verification, a core opportunity for DPS.",
-            "<strong>Increased Need for Data in Humanitarian & Risk Management Sectors:</strong> The 'polycrisis' drives demand from NGOs for reliable data for aid delivery and security planning.",
-            "<strong>Strategic Data Licensing and Partnerships:</strong> The unique dataset can be monetized by licensing it to other tech firms, including global competitors like Esri."
-        ]
-    },
-    threats: {
-        title: 'Threats',
-        color: 'yellow',
-        points: [
-            "<strong>Severe Macroeconomic Contraction:</strong> A shrinking economy and hyperinflation threaten the viability of commercial clients and reduce overall market spending.",
-            "<strong>Political Instability & Physical Risk:</strong> Escalating conflict poses direct threats to staff, assets, and the ability to conduct data collection operations.",
-            "<strong>Critical Infrastructure Failure:</strong> Dependence on unreliable national power grids and internet connectivity renders digital products and services unusable.",
-            "<strong>Direct Competition from Global Players:</strong> The entry of Esri brings superior technology, global branding, and deep financial resources, threatening to capture high-value clients."
-        ]
-    }
-};
-
-const strategyData = [
-    {
-        title: 'Offensive Strategy: "The Ground-Truth Provider"',
-        content: "Leverage core strengths to target opportunities created by the crisis. Pivot to become the premier provider of 'ground-truth' intelligence for risk management, humanitarian logistics, and the emerging FinTech (MMQR) ecosystem.",
-        color: 'blue'
-    },
-    {
-        title: 'Modernization Strategy: "Strategic Focus & Tech Refresh"',
-        content: "Address internal weaknesses by divesting from non-core legacy services (e.g., general printing) to conserve capital. Invest freed resources in modernizing the core data infrastructure and embracing a data-licensing model as a primary growth engine.",
-        color: 'green'
-    },
-    {
-        title: 'Defensive Strategy: "The Incumbent\'s Moat"',
-        content: "Use unique strengths to defend against external threats. Relentlessly market the value of verified, 'ground-truth' data against global competitors. Fortify key client relationships and position physical/offline products as an essential backup for when digital infrastructure fails.",
-        color: 'yellow'
-    },
-    {
-        title: 'Consolidation Strategy: "Battening Down the Hatches"',
-        content: "Minimize the impact of external threats on internal vulnerabilities. De-risk the data collection model by exploring remote methods (satellite imagery, AI). Reduce financial exposure from non-core businesses and enhance physical and digital security protocols.",
-        color: 'red'
-    }
-];
-
-let currentChart = null;
-
-function changeTab(tabName) {
-    const tabContent = document.getElementById('tab-content');
-    const data = pestData[tabName];
-    
-    let chartHtml = '';
-    if (data.chartType) {
-        chartHtml = `<div class="chart-container"><canvas id="pestChart"></canvas></div>`;
-    }
-
-    tabContent.innerHTML = `
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-            <div class="order-2 lg:order-1">
-                <h3 class="text-2xl font-bold text-stone-800 mb-3">${data.title}</h3>
-                <p class="text-stone-600 mb-6">${data.summary}</p>
-                <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                    ${data.kpis.map(kpi => `
-                        <div class="bg-stone-100 p-4 rounded-lg">
-                            <p class="text-sm text-stone-500">${kpi.label}</p>
-                            <p class="text-lg font-semibold text-stone-900">${kpi.value}</p>
-                        </div>
-                    `).join('')}
-                </div>
-            </div>
-            <div class="order-1 lg:order-2 flex justify-center items-center min-h-[300px]">
-                ${chartHtml ? chartHtml : '<div class="text-center p-8 bg-stone-50 rounded-lg"><h4 class="font-semibold text-stone-700">Qualitative Insights</h4><p class="text-stone-500">No quantitative chart for this section.</p></div>'}
-            </div>
-        </div>
-    `;
-
-    if (currentChart) {
-        currentChart.destroy();
-    }
-
-    if (data.chartType) {
-        const ctx = document.getElementById('pestChart').getContext('2d');
-        currentChart = new Chart(ctx, {
-            type: data.chartType,
-            data: data.chartData,
-            options: data.chartOptions
-        });
-    }
-
-    document.querySelectorAll('[id^="tab-btn-"]').forEach(btn => btn.classList.remove('active-tab', 'border-blue-600', 'text-blue-600'));
-    document.getElementById(`tab-btn-${tabName}`).classList.add('active-tab', 'border-blue-600', 'text-blue-600');
-}
-
-function showSwotDetail(swotKey) {
-    const detailContainer = document.getElementById('swot-detail-container');
-    const data = swotData[swotKey];
-    
-    const colorClasses = {
-        green: { bg: 'bg-green-50', border: 'border-green-500', text: 'text-green-800' },
-        red: { bg: 'bg-red-50', border: 'border-red-500', text: 'text-red-800' },
-        blue: { bg: 'bg-blue-50', border: 'border-blue-500', text: 'text-blue-800' },
-        yellow: { bg: 'bg-yellow-50', border: 'border-yellow-500', text: 'text-yellow-800' }
-    };
-    
-    const classes = colorClasses[data.color];
-
-    detailContainer.innerHTML = `
-        <div class="p-6 rounded-xl ${classes.bg} border-l-4 ${classes.border} section-fade-in">
-            <h3 class="font-bold text-2xl ${classes.text} mb-4">${data.title}</h3>
-            <ul class="space-y-3 list-disc list-inside text-stone-700">
-                ${data.points.map(point => `<li>${point}</li>`).join('')}
-            </ul>
-        </div>
-    `;
-}
-
-function setupAccordion() {
-    const accordionContainer = document.getElementById('strategy-accordion');
-    accordionContainer.innerHTML = strategyData.map((item, index) => {
-        const colorClasses = {
-            blue: { border: 'border-blue-500', bg: 'bg-blue-100', text: 'text-blue-800' },
-            green: { border: 'border-green-500', bg: 'bg-green-100', text: 'text-green-800' },
-            yellow: { border: 'border-yellow-500', bg: 'bg-yellow-100', text: 'text-yellow-800' },
-            red: { border: 'border-red-500', bg: 'bg-red-100', text: 'text-red-800' }
-        };
-        const classes = colorClasses[item.color];
-
-        return `
-            <div class="bg-white rounded-lg shadow-sm">
-                <h2>
-                    <button type="button" class="flex items-center justify-between w-full p-5 font-medium text-left text-stone-800 border-l-4 ${classes.border} rounded-lg" data-accordion-target="#strategy-body-${index}" aria-expanded="false" aria-controls="strategy-body-${index}">
-                        <span class="${classes.text}">${item.title}</span>
-                        <svg data-accordion-icon class="w-6 h-6 shrink-0" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                    </button>
-                </h2>
-                <div id="strategy-body-${index}" class="hidden p-5 border-t">
-                    <p class="text-stone-600">${item.content}</p>
-                </div>
-            </div>
-        `;
-    }).join('');
-
-    document.querySelectorAll('[data-accordion-target]').forEach(button => {
-        button.addEventListener('click', () => {
-            const targetId = button.getAttribute('data-accordion-target');
-            const targetPanel = document.querySelector(targetId);
-            const isExpanded = button.getAttribute('aria-expanded') === 'true';
-
-            button.setAttribute('aria-expanded', !isExpanded);
-            targetPanel.classList.toggle('hidden');
-            button.querySelector('[data-accordion-icon]').classList.toggle('rotate-180');
-        });
-    });
-}
-    // 🛠️ Moved inside onload
-    window.onload = function () {
-      changeTab('political');
-      showSwotDetail('strengths');
-      setupAccordion();
-
-      // ✅ MOBILE MENU TOGGLE FIXED HERE
-      const mobileMenuButton = document.getElementById('mobile-menu-button');
-      const mobileMenu = document.getElementById('mobile-menu');
-      mobileMenuButton.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-      });
-
-      document.querySelectorAll('#mobile-menu a, main a').forEach(link => {
-        link.addEventListener('click', () => {
-          mobileMenu.classList.add('hidden');
-        });
-      });
-    };
-
-</script>
-</body>
-</html>
+  
+     
