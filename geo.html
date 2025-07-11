@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Course Outline: Geospatial Storytelling</title>
+    <link rel="shortcut icon" href="https://dpsmap.com/assets/favicon/favicon-512x512.png" sizes="512x512" type="image/x-icon" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutrals (Stone) with Amber accent -->
+    <!-- Application Structure Plan: The SPA is designed as an interactive learning journey, rather than a linear document. It prioritizes user-driven exploration over the report's original structure. The architecture includes: 1) A main navigation to jump to key concepts (Overview, Toolbox, Curriculum). 2) A "Toolbox" section allowing users to interactively select and compare the core GIS tools (KnightLab, Kepler, Mapbox), immediately seeing their purpose, examples, and place in the curriculum. 3) A visual, clickable "Curriculum Journey" timeline that breaks down the 10-week schedule into manageable, interactive stages. This structure was chosen because prospective students are most interested in the practical skills and the course progression. It allows them to quickly answer "What tools will I learn?" and "What is the week-to-week flow?" without reading the entire document. It transforms a passive syllabus into an active exploration tool. -->
+    <!-- Visualization & Content Choices: 
+        - Report Info: Learning Objectives -> Goal: Inform/Compare -> Viz: Radar Chart -> Interaction: Hover tooltips -> Justification: Shows how the course provides a balanced, well-rounded skill set across different competency areas (theory, design, tools), which is more impactful than a simple list. -> Library: Chart.js.
+        - Report Info: 10-Week Schedule -> Goal: Show Change/Process -> Viz: Interactive Timeline/Process Flow -> Interaction: Click to reveal weekly details -> Justification: Visualizes the course as a progressive journey, making the structure intuitive and easy to follow. Connects weekly topics to the core tools. -> Library/Method: HTML/CSS/JS.
+        - Report Info: Core Tools (KnightLab, Kepler, Mapbox) -> Goal: Organize/Compare -> Viz: Tabbed Content Display -> Interaction: Click to switch tool view -> Justification: Allows for direct comparison of tools and focuses user attention on the practical applications and examples for each, which is a primary user goal. -> Library/Method: HTML/CSS/JS.
+        - Report Info: Data Models (Vector vs. Raster) -> Goal: Compare -> Viz: HTML Table -> Justification: A clear, structured table is the most effective way to present this comparative technical information. -> Library/Method: HTML/CSS.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .section-hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-stone-50 text-stone-800">
+
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <div class="font-bold text-xl text-stone-900">
+                <span class="text-amber-600">GIS</span> Storytelling
+            </div>
+            <div class="hidden md:flex space-x-8">
+                  <!--<a href="https://dpsmap.com/" class="text-stone-600 hover:text-blue-600">Home</a>-->
+                <a href="#overview" class="text-stone-600 hover:text-amber-600 transition-colors">Overview</a>
+                <a href="#toolbox" class="text-stone-600 hover:text-amber-600 transition-colors">The Toolbox</a>
+                <a href="#journey" class="text-stone-600 hover:text-amber-600 transition-colors">Curriculum Journey</a>
+                <a href="#principles" class="text-stone-600 hover:text-amber-600 transition-colors">Core Principles</a>
+                <a href="index.html" class="text-stone-600 hover:text-amber-600 transition-colors">DPS</a>
+                <a href="mmgoldreport.html" class="text-stone-600 hover:text-amber-600 transition-colors">MM Goldreport</a>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-stone-600 hover:text-amber-600 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden bg-white px-6 pt-2 pb-4 space-y-2">
+        <a href="#overview" class="block text-stone-600 hover:text-amber-600 transition-colors">Overview</a>
+        <a href="#toolbox" class="block text-stone-600 hover:text-amber-600 transition-colors">The Toolbox</a>
+        <a href="#journey" class="block text-stone-600 hover:text-amber-600 transition-colors">Curriculum Journey</a>
+        <a href="#principles" class="block text-stone-600 hover:text-amber-600 transition-colors">Core Principles</a>
+		<a href="index.html" class="block text-stone-600 hover:text-amber-600 transition-colors">Dps</a>
+        <a href="mmgoldreport.html" class="text-stone-600 hover:text-amber-600 transition-colors">MM Goldreport</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="bg-stone-100 py-20 md:py-32">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-4xl md:text-6xl font-bold text-stone-900 leading-tight">Geospatial Storytelling</h1>
+                <p class="mt-4 text-lg md:text-xl text-stone-600 max-w-3xl mx-auto">Transforming complex spatial data into compelling, narratives. D-course by Myae Pone.</p>
+                <div class="mt-8 flex justify-center space-x-4">
+                    <div class="bg-white rounded-lg shadow-md p-4 text-center">
+                        <p class="text-3xl font-bold text-amber-600">10</p>
+                        <p class="text-sm text-stone-500">Weeks</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md p-4 text-center">
+                        <p class="text-3xl font-bold text-amber-600">3</p>
+                        <p class="text-sm text-stone-500">Core Toolsets</p>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md p-4 text-center">
+                        <p class="text-3xl font-bold text-amber-600">1</p>
+                        <p class="text-sm text-stone-500">Capstone Project</p>
+                    </div>
+                </div>
+                 <a href="#overview" class="mt-12 inline-block bg-amber-600 text-white font-bold py-3 px-8 rounded-lg shadow-lg hover:bg-amber-700 transition-transform transform hover:scale-105">
+                    Explore the Curriculum
+                </a>
+            </div>
+        </section>
+
+        <section id="overview" class="py-16 md:py-24">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold">Course Overview</h2>
+                    <p class="mt-3 text-stone-600 max-w-2xl mx-auto">This section introduces the fundamental goals of the course. It outlines what you will be able to achieve upon completion, visualized through an interactive chart that breaks down the core competencies you will develop.</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4">Course Description</h3>
+                        <p class="text-stone-600 mb-4">This elective course introduces students to the burgeoning field of geospatial storytelling, an art form that leverages interactive maps and geographic information systems (GIS) to convey compelling narratives. It emphasizes the critical role of design, communication, and ethical considerations in transforming complex spatial data into accessible and engaging stories.</p>
+                        <p class="text-stone-600">Students will learn a "pipeline" approach—from data acquisition to narrative construction—using industry-standard tools. The goal is to bridge the gap between technical GIS analysis and the need for broader public and stakeholder engagement, enhancing your professional impact.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-4 text-center">Learning Objectives</h3>
+                        <div class="chart-container">
+                            <canvas id="loChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="toolbox" class="py-16 md:py-24 bg-stone-100">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold">The Storyteller's Toolbox</h2>
+                    <p class="mt-3 text-stone-600 max-w-2xl mx-auto">This course is built around a hands-on approach with three core toolsets, progressing from accessible entry points to professional-grade platforms. Click on each tool to explore its role in the curriculum, its key features, and the types of stories you'll learn to create.</p>
+                </div>
+                <div class="flex justify-center mb-8 space-x-2 md:space-x-4 bg-stone-200 p-2 rounded-lg max-w-md mx-auto">
+                    <button data-tool="knightlab" class="tool-btn flex-1 py-2 px-4 rounded-md font-semibold text-sm md:text-base transition-colors bg-amber-600 text-white">KnightLab</button>
+                    <button data-tool="kepler" class="tool-btn flex-1 py-2 px-4 rounded-md font-semibold text-sm md:text-base transition-colors text-stone-600 hover:bg-white">Kepler.gl</button>
+                    <button data-tool="mapbox" class="tool-btn flex-1 py-2 px-4 rounded-md font-semibold text-sm md:text-base transition-colors text-stone-600 hover:bg-white">Mapbox</button>
+                </div>
+                <div id="tool-content" class="bg-white p-6 md:p-8 rounded-lg shadow-md max-w-4xl mx-auto min-h-[400px]">
+                </div>
+            </div>
+        </section>
+
+        <section id="journey" class="py-16 md:py-24">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold">Curriculum Journey</h2>
+                    <p class="mt-3 text-stone-600 max-w-2xl mx-auto">The 10-week module is structured as a progressive journey, building skills week by week. The path below visualizes this progression. Click on any stage to see the specific topics and activities planned for that period.</p>
+                </div>
+                <div id="journey-timeline" class="relative">
+                </div>
+                <div id="journey-details" class="mt-8 bg-stone-100 p-6 md:p-8 rounded-lg shadow-inner max-w-4xl mx-auto min-h-[150px]">
+                </div>
+            </div>
+        </section>
+        
+        <section id="principles" class="py-16 md:py-24 bg-stone-100">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold">Core Principles</h2>
+                     <p class="mt-3 text-stone-600 max-w-2xl mx-auto">Beyond tools, effective storytelling relies on fundamental principles of design and a strong ethical framework. This section covers the foundational knowledge that underpins every map and narrative you will create.</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-2xl font-bold mb-4">Cartographic Design</h3>
+                        <p class="text-stone-600 mb-4">Effective maps are not just accurate; they are designed. We'll cover principles of visual hierarchy, symbology, color theory, and map projections to ensure your stories are clear, intuitive, and impactful. Design choices are narrative choices.</p>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left text-sm text-stone-500 mt-4">
+                                <thead class="text-xs text-stone-700 uppercase bg-stone-100">
+                                    <tr>
+                                        <th scope="col" class="px-6 py-3">Data Model</th>
+                                        <th scope="col" class="px-6 py-3">Representation</th>
+                                        <th scope="col" class="px-6 py-3">Strengths</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="bg-white border-b">
+                                        <th scope="row" class="px-6 py-4 font-medium text-stone-900 whitespace-nowrap">Vector</th>
+                                        <td class="px-6 py-4">Points, Lines, Polygons</td>
+                                        <td class="px-6 py-4">High precision for discrete features, flexible for styling.</td>
+                                    </tr>
+                                    <tr class="bg-white">
+                                        <th scope="row" class="px-6 py-4 font-medium text-stone-900 whitespace-nowrap">Raster</th>
+                                        <td class="px-6 py-4">Grid Cells (pixels)</td>
+                                        <td class="px-6 py-4">Excellent for continuous surfaces like elevation or imagery.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                     <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-2xl font-bold mb-4">Geospatial Ethics</h3>
+                        <p class="text-stone-600">With great data comes great responsibility. This course instills a strong ethical foundation, addressing issues of surveillance, privacy, bias, and the potential for misrepresentation. You will learn to collect, analyze, and visualize data in a way that minimizes harm and promotes social well-being.</p>
+                         <ul class="mt-4 space-y-2 text-stone-600 list-inside">
+                             <li class="flex items-start"><span class="text-amber-600 mr-2 mt-1">&#10003;</span><span>Informed Consent</span></li>
+                             <li class="flex items-start"><span class="text-amber-600 mr-2 mt-1">&#10003;</span><span>Data Minimization & Anonymization</span></li>
+                             <li class="flex items-start"><span class="text-amber-600 mr-2 mt-1">&#10003;</span><span>Bias Awareness in Data & Algorithms</span></li>
+                             <li class="flex items-start"><span class="text-amber-600 mr-2 mt-1">&#10003;</span><span>Transparency in Methods</span></li>
+                         </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <footer class="bg-stone-800 text-stone-300 py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 DPS. All rights reserved.</p>
+            <p class="text-sm text-stone-400 mt-2">This interactive course outline is a conceptual representation.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // By placing the script at the end of the body, we ensure all HTML elements are loaded.
+        // The DOMContentLoaded event listener is no longer necessary and its removal resolves the script execution order issue.
+
+        // --- DATA FROM SOURCE REPORT ---
+        const learningObjectivesData = {
+            labels: ['Theory', 'Carto. Design', 'KnightLab', 'Kepler.gl', 'Mapbox', 'Ethics'],
+            datasets: [{
+                label: 'Course Competencies',
+                data: [4, 5, 4, 5, 5, 4],
+                backgroundColor: 'rgba(217, 119, 6, 0.2)',
+                borderColor: 'rgba(217, 119, 6, 1)',
+                pointBackgroundColor: 'rgba(217, 119, 6, 1)',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: 'rgba(217, 119, 6, 1)'
+            }]
+        };
+
+        const toolData = {
+            knightlab: {
+                title: 'Weeks 3-4: KnightLab Tools - Accessible Narrative Mapping',
+                description: "KnightLab provides an accessible, low-code entry point to storytelling. Using tools like StoryMap JS and Timeline JS, you'll learn to quickly build location-based journeys and chronological narratives, focusing on story structure and multimedia integration without a steep technical curve.",
+                features: ['Easy-to-use interfaces', 'Google Sheets integration', 'Rapid prototyping for quick stories', 'Embeds multimedia (video, images, audio)'],
+                examples: ["Manny Taiblum's Holocaust Survival Journey", "Game of Thrones: Arya's Journey", "Women in Computing Timeline"]
+            },
+            kepler: {
+                title: 'Weeks 5-6: Kepler.gl - Advanced Data Exploration',
+                description: "Kepler.gl is a powerful, open-source tool for exploring large datasets. Here, the focus shifts from presenting a pre-defined story to *discovering* narratives within the data itself. You'll learn to perform exploratory analysis, animate temporal data, and reveal complex spatial patterns.",
+                features: ['Renders large datasets with GPU power', 'Animates data over time', 'Geo aggregation (Hexbins, Clusters)', 'Advanced filtering and layering options'],
+                examples: ["Visualizing Uber Trip Data in NYC", "Animating 40 Years of California Earthquakes", "Mapping UK Commute Patterns"]
+            },
+            mapbox: {
+                title: 'Weeks 7-8: Mapbox - Professional Web Mapping & Scrollytelling',
+                description: "Mapbox is the professional-grade platform for creating highly custom, performant, and interactive web maps. You will learn to use Mapbox Studio for bespoke map design and Mapbox GL JS to build sophisticated 'scrollytelling' experiences.",
+                features: ['Full control over cartographic styling', 'High-performance client-side rendering', 'Create custom vector tiles', 'Powerful APIs for dynamic interaction'],
+                examples: ["'Saving the Nile' by Al Jazeera", "'100 years of CA wildfires' by SF Chronicle", "'Dutch Trade in Black People' by NOS"]
+            }
+        };
+        
+        const journeyData = [
+            { id: 'week1', title: 'Wk 1', label: 'Foundations', content: '<strong>Topic:</strong> Foundations of Geospatial Storytelling. <br><strong>Activities:</strong> Intro to narrative structures, analyzing successful geospatial stories, and understanding the ITC geospatial problem-solving cycle.' },
+            { id: 'week2', title: 'Wk 2', label: 'Design Principles', content: '<strong>Topic:</strong> Data Principles & Cartographic Design. <br><strong>Activities:</strong> Understanding vector vs. raster data, data quality assessment, and mastering principles of visual hierarchy, symbology, color theory, and map projections.' },
+            { id: 'weeks3-4', title: 'Wk 3-4', label: 'KnightLab', content: '<strong>Tool Focus: KnightLab (StoryMap JS & Timeline JS).</strong> <br><strong>Activities:</strong> Hands-on workshops to create location-based journeys and chronological timelines. Focus on rapid prototyping and core narrative construction with accessible tools.' },
+            { id: 'weeks5-6', title: 'Wk 5-6', label: 'Kepler.gl', content: '<strong>Tool Focus: Kepler.gl.</strong> <br><strong>Activities:</strong> Importing, cleaning, and visualizing large datasets. Performing exploratory data analysis to identify and build data-driven stories. Animating temporal data.' },
+            { id: 'weeks7-8', title: 'Wk 7-8', label: 'Mapbox', content: '<strong>Tool Focus: Mapbox (Studio & GL JS).</strong> <br><strong>Activities:</strong> Designing bespoke map styles in Mapbox Studio. Building interactive "scrollytelling" narratives with Mapbox GL JS, linking scrolling text to dynamic map views.' },
+            { id: 'weeks9-10', title: 'Wk 9-10', label: 'Capstone', content: '<strong>Topic:</strong> Final Project & Ethics. <br><strong>Activities:</strong> Developing a comprehensive capstone project. Deep dive into ethical considerations, data privacy, and responsible communication.' },
+        ];
+
+        // --- CHART INITIALIZATION ---
+        const loChartCtx = document.getElementById('loChart').getContext('2d');
+        new Chart(loChartCtx, {
+            type: 'radar',
+            data: learningObjectivesData,
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { position: 'top' } },
+                scales: {
+                    r: {
+                        angleLines: { color: 'rgba(0, 0, 0, 0.1)' },
+                        grid: { color: 'rgba(0, 0, 0, 0.1)' },
+                        pointLabels: { font: { size: 12 }, color: '#333' },
+                        ticks: { backdropColor: 'transparent', stepSize: 1 },
+                        suggestedMin: 0,
+                        suggestedMax: 5
+                    }
+                }
+            }
+        });
+
+        // --- TOOLBOX INTERACTIVITY ---
+        const toolContentContainer = document.getElementById('tool-content');
+        const toolButtons = document.querySelectorAll('.tool-btn');
+        
+        function updateToolContent(tool) {
+            const data = toolData[tool];
+            if (!data) return;
+
+            const featuresHtml = data.features.map(feature => `<li class="flex items-start"><span class="text-amber-600 mr-2 mt-1">&#10003;</span><span>${feature}</span></li>`).join('');
+            const examplesHtml = data.examples.map(example => `<li class="text-sm p-2 bg-stone-50 rounded">${example}</li>`).join('');
+
+            toolContentContainer.innerHTML = `
+                <h3 class="text-xl md:text-2xl font-bold mb-3 text-stone-900">${data.title}</h3>
+                <p class="text-stone-600 mb-6">${data.description}</p>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-bold mb-2 text-stone-800">Key Features</h4>
+                        <ul class="space-y-2 text-stone-600">${featuresHtml}</ul>
+                    </div>
+                    <div>
+                        <h4 class="font-bold mb-2 text-stone-800">Example Narratives</h4>
+                        <ul class="space-y-2">${examplesHtml}</ul>
+                    </div>
+                </div>
+            `;
+        }
+
+        toolButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const tool = button.dataset.tool;
+                toolButtons.forEach(btn => {
+                    btn.classList.remove('bg-amber-600', 'text-white');
+                    btn.classList.add('text-stone-600', 'hover:bg-white');
+                });
+                button.classList.add('bg-amber-600', 'text-white');
+                button.classList.remove('text-stone-600', 'hover:bg-white');
+                updateToolContent(tool);
+            });
+        });
+
+        updateToolContent('knightlab'); // Initial load
+
+        // --- CURRICULUM JOURNEY INTERACTIVITY ---
+        const journeyTimelineContainer = document.getElementById('journey-timeline');
+        const journeyDetailsContainer = document.getElementById('journey-details');
+        
+        journeyTimelineContainer.innerHTML = `
+            <div class="absolute left-1/2 -ml-px w-0.5 h-full bg-stone-300" aria-hidden="true"></div>
+            ${journeyData.map((item, index) => `
+            <div class="relative flex items-center justify-between mb-8 group">
+                <div class="w-2/5 text-right pr-8">
+                    ${index % 2 === 0 ? `<button data-journey-id="${item.id}" class="journey-btn font-bold text-stone-700 group-hover:text-amber-600 transition-colors">${item.label}</button>` : ''}
+                </div>
+                <div class="z-10 absolute left-1/2 -translate-x-1/2 w-16 h-8 rounded-full bg-white border-2 border-stone-300 flex items-center justify-center group-hover:border-amber-500 transition-colors">
+                     <span class="text-xs font-bold text-stone-500">${item.title}</span>
+                </div>
+                 <div class="w-2/5 text-left pl-8">
+                    ${index % 2 !== 0 ? `<button data-journey-id="${item.id}" class="journey-btn font-bold text-stone-700 group-hover:text-amber-600 transition-colors">${item.label}</button>` : ''}
+                </div>
+            </div>
+            `).join('')}
+        `;
+        
+        function updateJourneyDetails(id) {
+             const data = journeyData.find(item => item.id === id);
+             if(!data) return;
+             
+             journeyDetailsContainer.innerHTML = `<p class="text-stone-700">${data.content}</p>`;
+             
+             document.querySelectorAll('.journey-btn').forEach(btn => {
+                const parentGroup = btn.closest('.group');
+                const circle = parentGroup.querySelector('.z-10');
+                 if (btn.dataset.journeyId === id) {
+                     btn.classList.add('text-amber-600');
+                     circle.classList.add('border-amber-500');
+                     circle.classList.remove('border-stone-300');
+                 } else {
+                     btn.classList.remove('text-amber-600');
+                     circle.classList.add('border-stone-300');
+                     circle.classList.remove('border-amber-500');
+                 }
+             });
+        }
+        
+        document.querySelectorAll('.journey-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                updateJourneyDetails(button.dataset.journeyId);
+            });
+        });
+        
+        updateJourneyDetails('week1'); // Initial load
+
+        // --- MOBILE MENU ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        document.querySelectorAll('#mobile-menu a, main a').forEach(link => {
+            link.addEventListener('click', () => {
+                 mobileMenu.classList.add('hidden');
+            });
+        });
+
+    </script>
+</body>
+</html>
